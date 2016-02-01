@@ -34,7 +34,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
    #     driver.find_element_by_xpath("//li[5]/a/span").click()
         driver.find_element_by_xpath("//span[contains(.,'Administration')]").click()
         driver.find_element_by_xpath("//a[contains(.,'Manage Servers')]")
-        driver.find_element_by_xpath("//button[@type='button']").click()
+        driver.find_element_by_xpath("//button[contains(@ng-click,'showAddServerForm()')]").click()
         driver.find_element_by_name("ipAddress").clear()
         driver.find_element_by_name("ipAddress").send_keys("172.22.5.140")
         driver.find_element_by_name("userName").clear()
