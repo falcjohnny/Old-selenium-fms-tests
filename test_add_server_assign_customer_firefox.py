@@ -13,6 +13,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         self.driver = webdriver.Remote(command_executor='http://172.17.0.3:4444/wd/hub',desired_capabilities=DesiredCapabilities.FIREFOX)
         self.driver.implicitly_wait(30)
         self.base_url = "http://172.17.0.2/"
+        self.driver.maximize_window()
         self.verificationErrors = []
         self.accept_next_alert = True
     
