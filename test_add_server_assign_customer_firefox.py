@@ -31,10 +31,15 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//input[@type='password']").clear()
         driver.find_element_by_xpath("//input[@type='password']").send_keys("freestor")
         driver.find_element_by_xpath("//button[@type='submit']").click()
-   #     driver.find_element_by_xpath("//li[5]/a/span").click()
-        driver.find_element_by_xpath("//span[contains(.,'Administration')]").click()
-        driver.find_element_by_xpath("//a[contains(.,'Manage Servers')]")
-        driver.find_element_by_xpath("//button[contains(@ng-click,'showAddServerForm()')]").click()
+        driver.find_element_by_xpath("//li[5]/a/span").click()
+        driver.find_element_by_link_text("Manage Servers").click()
+        for i in range(60):
+            try:
+                if driver.find_element_by_xpath("//button[@type='button']").is_displayed(): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        driver.find_element_by_xpath("//button[@type='button']").click()
         driver.find_element_by_name("ipAddress").clear()
         driver.find_element_by_name("ipAddress").send_keys("172.22.5.140")
         driver.find_element_by_name("userName").clear()
@@ -42,6 +47,13 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_name("passwd").clear()
         driver.find_element_by_name("passwd").send_keys("IPStor101")
         driver.find_element_by_xpath("//button[@type='submit']").click()
+        for i in range(60):
+            try:
+                if driver.find_element_by_xpath("//strong[contains(.,'Server added')]").is_displayed(): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        # Go to Customer
         driver.find_element_by_xpath("//li[3]/div/span").click()
         driver.find_element_by_xpath("//button[@type='button']").click()
         driver.find_element_by_xpath("(//input[@type='text'])[2]").clear()
@@ -49,6 +61,12 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("(//input[@type='text'])[3]").clear()
         driver.find_element_by_xpath("(//input[@type='text'])[3]").send_keys("test.com")
         driver.find_element_by_xpath("//button[@type='submit']").click()
+        for i in range(60):
+            try:
+                if driver.find_element_by_xpath("//strong[contains(.,'Customer added successfully')]").is_displayed(): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
         driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
         driver.find_element_by_xpath("//fieldset/div/div/div/div/span").click()
         # Select server to assign it to customer
@@ -56,10 +74,17 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//label[contains(.,'Shared')]").click()
         driver.find_element_by_xpath("(//input[@type='text'])[4]").click()
         # Select the Storage Pool
-        driver.find_element_by_xpath("//span[contains(.,'OpenStack-StoragePool-1')]").click()
+        driver.find_element_by_xpath("//span[contains(.,'StoragePool-1')]").click()
         driver.find_element_by_xpath("//button[@type='submit']").click()
+        for i in range(60):
+            try:
+                if driver.find_element_by_xpath("//strong[contains(.,'Customer updated successfully')]").is_displayed(): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
         driver.find_element_by_xpath("(//a[contains(@href, '')])[8]").click()
         driver.find_element_by_link_text("Logout").click()
+        # Login with domain admin user
         driver.find_element_by_xpath("//input[@type='text']").clear()
         driver.find_element_by_xpath("//input[@type='text']").send_keys("admin")
         driver.find_element_by_xpath("(//input[@type='text'])[2]").clear()
