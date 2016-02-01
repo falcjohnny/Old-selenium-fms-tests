@@ -11,7 +11,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(30)
-        self.base_url = "http://172.22.12.197/"
+        self.base_url = "http://172.17.0.2/"
         self.verificationErrors = []
         self.accept_next_alert = True
     
@@ -33,7 +33,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_link_text("Manage Servers").click()
         driver.find_element_by_xpath("//button[@type='button']").click()
         driver.find_element_by_name("ipAddress").clear()
-        driver.find_element_by_name("ipAddress").send_keys("172.22.5.138")
+        driver.find_element_by_name("ipAddress").send_keys("172.22.5.140")
         driver.find_element_by_name("userName").clear()
         driver.find_element_by_name("userName").send_keys("root")
         driver.find_element_by_name("passwd").clear()
@@ -49,7 +49,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
         driver.find_element_by_xpath("//fieldset/div/div/div/div/span").click()
         # Select server to assign it to customer
-        driver.find_element_by_link_text("tc-ci-fss-h138").click()
+        driver.find_element_by_link_text("FSSVA-H5-140").click()
         driver.find_element_by_xpath("//label[contains(.,'Shared')]").click()
         driver.find_element_by_xpath("(//input[@type='text'])[4]").click()
         # Select the Storage Pool
