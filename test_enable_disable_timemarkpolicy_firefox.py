@@ -12,13 +12,76 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Remote(command_executor='http://172.17.0.3:4444/wd/hub',desired_capabilities=DesiredCapabilities.FIREFOX)
         self.driver.implicitly_wait(30)
-        self.base_url = 172.17.0.3
+        self.base_url = 172.17.0.2
         self.driver.maximize_window()
         self.verificationErrors = []
         self.accept_next_alert = True
     
     def test_enable_disable_timemarkpolicy_firefox(self):
         driver = self.driver
+        driver.get(self.base_url + "/#/login")
+        for i in range(60):
+            try:
+                if driver.find_element_by_css_selector("span.ng-binding").is_displayed(): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        driver.find_element_by_xpath("//input[@type='text']").clear()
+        driver.find_element_by_xpath("//input[@type='text']").send_keys("superadmin")
+        driver.find_element_by_xpath("//input[@type='password']").clear()
+        driver.find_element_by_xpath("//input[@type='password']").send_keys("freestor")
+        driver.find_element_by_xpath("//button[@type='submit']").click()
+        driver.find_element_by_xpath("//li[5]/a/span").click()
+        driver.find_element_by_link_text("Servers").click()
+        for i in range(60):
+            try:
+                if driver.find_element_by_xpath("//button[@type='button']").is_displayed(): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        driver.find_element_by_xpath("//button[@type='button']").click()
+        driver.find_element_by_name("ipAddress").clear()
+        driver.find_element_by_name("ipAddress").send_keys("172.22.5.140")
+        driver.find_element_by_name("userName").clear()
+        driver.find_element_by_name("userName").send_keys("root")
+        driver.find_element_by_name("passwd").clear()
+        driver.find_element_by_name("passwd").send_keys("IPStor101")
+        driver.find_element_by_xpath("//button[@type='submit']").click()
+        for i in range(60):
+            try:
+                if driver.find_element_by_xpath("//strong[contains(.,'Server added')]").is_displayed(): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        # Go to Customer
+        driver.find_element_by_xpath("//li[3]/div/span").click()
+        driver.find_element_by_xpath("//button[@type='button']").click()
+        driver.find_element_by_xpath("(//input[@type='text'])[2]").clear()
+        driver.find_element_by_xpath("(//input[@type='text'])[2]").send_keys("test")
+        driver.find_element_by_xpath("(//input[@type='text'])[3]").clear()
+        driver.find_element_by_xpath("(//input[@type='text'])[3]").send_keys("test.com")
+        driver.find_element_by_xpath("//button[@type='submit']").click()
+        for i in range(60):
+            try:
+                if driver.find_element_by_xpath("//strong[contains(.,'Customer added successfully')]").is_displayed(): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
+        driver.find_element_by_xpath("//fieldset/div/div/div/div/span").click()
+        # Select server to assign it to customer
+        driver.find_element_by_link_text("FSSVA-H5-140").click()
+        driver.find_element_by_xpath("//label[contains(.,'Shared')]").click()
+        driver.find_element_by_xpath("(//input[@type='text'])[4]").click()
+        # Select the Storage Pool
+        driver.find_element_by_xpath("//span[contains(.,'StoragePool-1')]").click()
+        driver.find_element_by_xpath("//button[@type='submit']").click()
+        for i in range(60):
+            try:
+                if driver.find_element_by_xpath("//strong[contains(.,'Customer updated successfully')]").is_displayed(): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
         driver.find_element_by_xpath("//li[3]/a/span").click()
         # Create a Virtual Device
         driver.find_element_by_xpath("//button[@type='button']").click()

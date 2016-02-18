@@ -12,7 +12,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Remote(command_executor='http://172.17.0.3:4444/wd/hub',desired_capabilities=DesiredCapabilities.FIREFOX)
         self.driver.implicitly_wait(30)
-        self.base_url = 172.17.0.3
+        self.base_url = 172.17.0.2
         self.driver.maximize_window()
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -70,7 +70,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
         driver.find_element_by_xpath("//fieldset/div/div/div/div/span").click()
         # Select server to assign it to customer
-        driver.find_element_by_link_text("FSSVA-H5-140").click()
+        driver.find_element_by_link_text("FS-FSS-H5-140").click()
         driver.find_element_by_xpath("//label[contains(.,'Shared')]").click()
         driver.find_element_by_xpath("(//input[@type='text'])[4]").click()
         # Select the Storage Pool
