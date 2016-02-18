@@ -12,7 +12,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Remote(command_executor='http://172.17.0.3:4444/wd/hub',desired_capabilities=DesiredCapabilities.FIREFOX)
         self.driver.implicitly_wait(30)
-        self.base_url = "http://172.17.0.2/"
+        self.base_url = 172.17.0.3
         self.driver.maximize_window()
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -32,7 +32,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//input[@type='password']").send_keys("freestor")
         driver.find_element_by_xpath("//button[@type='submit']").click()
         driver.find_element_by_xpath("//li[5]/a/span").click()
-        driver.find_element_by_link_text("Manage Servers").click()
+        driver.find_element_by_link_text("Servers").click()
         for i in range(60):
             try:
                 if driver.find_element_by_xpath("//button[@type='button']").is_displayed(): break
