@@ -137,7 +137,7 @@ class TestCreateDelSnapFirefox(unittest.TestCase):
         #    time.sleep(1)
         #else: self.fail("time out")
 	driver.find_element_by_xpath("//div[@col='0']").click()
-        # Delet SAN Resource
+        # Delet SAN Resource.
     	driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/delete-device.tpl.html')]").click()
 	driver.find_element_by_xpath("//a[contains(.,'Delete Selected')]").click()
         for i in range(60):
