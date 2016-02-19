@@ -12,7 +12,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Remote(command_executor='http://172.17.0.3:4444/wd/hub',desired_capabilities=DesiredCapabilities.FIREFOX)
         self.driver.implicitly_wait(30)
-        self.base_url = 172.17.0.2
+        self.base_url = "http://172.17.0.2/"
         self.driver.maximize_window()
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -70,7 +70,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
         driver.find_element_by_xpath("//fieldset/div/div/div/div/span").click()
         # Select server to assign it to customer
-        driver.find_element_by_link_text("FSSVA-H5-140").click()
+        driver.find_element_by_link_text("FS-FSS-H5-140").click()
         driver.find_element_by_xpath("//label[contains(.,'Shared')]").click()
         driver.find_element_by_xpath("(//input[@type='text'])[4]").click()
         # Select the Storage Pool
@@ -82,35 +82,36 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        driver.find_element_by_xpath("//li[3]/a/span").click()
+        driver.find_element_by_xpath("//span[contains(.,'Manage')]").click()
         # Create a Virtual Device
-        driver.find_element_by_xpath("//button[@type='button']").click()
+        driver.find_element_by_xpath("//button[contains(@ng-click,'showCreateVirtualDeviceDialog(currentDevice)')]").click()
         driver.find_element_by_name("totalSize").clear()
         driver.find_element_by_name("totalSize").send_keys("1024")
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//div[@id='center']/div/div[2]/div[2]/div/div/div/div").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'The virtual device has been created.')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        driver.find_element_by_xpath("//div[@id='center']/div/div[2]/div[2]/div/div/div/div").click()
+	driver.find_element_by_xpath("//div[@col='0']").click()
         # Enable Timemark policy
-        driver.find_element_by_xpath("//div[4]/button").click()
-        driver.find_element_by_xpath("//body/ul/li[5]/a/span").click()
+        driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/snapshot-menu.tpl.html')]").click()
+        driver.find_element_by_xpath("//span[contains(.,'Create TimeMark/CDP Policy')]").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//button[@type='submit']").is_displayed(): break
+                if driver.find_element_by_xpath("//button[contains(.,'Add')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        driver.find_element_by_xpath("(//button[@type='button'])[10]").click()
-        driver.find_element_by_xpath("(//input[@type='text'])[3]").clear()
-        driver.find_element_by_xpath("(//input[@type='text'])[3]").send_keys("00:00")
-        driver.find_element_by_xpath("(//button[@type='button'])[18]").click()
+	time.sleep(1)
+        driver.find_element_by_xpath("//button[@ng-model='snapPolicy.schedule']").click()
+	#driver.find_element_by_xpath("(//input[@type='text'])[3]").clear()
+        #driver.find_element_by_xpath("(//input[@type='text'])[3]").send_keys("00:00")
+        #driver.find_element_by_xpath("(//button[@type='button'])[18]").click()
         driver.find_element_by_name("snapFreq").clear()
         driver.find_element_by_name("snapFreq").send_keys("2")
-        driver.find_element_by_xpath("(//button[@type='button'])[11]").click()
+        driver.find_element_by_xpath("//button[@ng-model='snapPolicy.notifctn']").click()
         driver.find_element_by_name("snapNotifyDur").clear()
         driver.find_element_by_name("snapNotifyDur").send_keys("12")
         driver.find_element_by_name("maxShots").clear()
@@ -118,14 +119,14 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//div[@id='center']/div/div[2]/div[2]/div/div/div/div").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'TimeMark policy created successfully  ')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        driver.find_element_by_xpath("//div[@id='center']/div/div[2]/div[2]/div/div/div/div").click()
+	driver.find_element_by_xpath("//div[@col='0']").click()
         # Verify timemark policy
-        driver.find_element_by_xpath("//div[4]/button").click()
-        driver.find_element_by_xpath("//body/ul/li[5]/a/span[2]").click()
+        driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/snapshot-menu.tpl.html')]").click()
+        driver.find_element_by_xpath("//span[contains(.,'Edit TimeMark/CDP Policy')]").click()
         try: self.assertEqual("2", driver.find_element_by_name("snapFreq").get_attribute("value"))
         except AssertionError as e: self.verificationErrors.append(str(e))
         try: self.assertEqual("12", driver.find_element_by_name("snapNotifyDur").get_attribute("value"))
@@ -139,20 +140,21 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        driver.find_element_by_xpath("//div[@id='center']/div/div[2]/div[2]/div/div/div/div").click()
+	driver.find_element_by_xpath("//div[@col='0']").click()
         # Disable Timemark policy
-        driver.find_element_by_xpath("//div[4]/button").click()
-        driver.find_element_by_xpath("//li[6]/a/span").click()
+        driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/snapshot-menu.tpl.html')]").click()
+        driver.find_element_by_xpath("//span[contains(.,'Delete TimeMark/CDP')]").click()
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//div[@id='center']/div/div[2]/div[2]/div/div/div/div").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'TimeMarks have been deleted.')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        driver.find_element_by_xpath("//div[@id='center']/div/div[2]/div[2]/div/div/div/div").click()
-        # Delete Virtual Device
-        driver.find_element_by_xpath("(//button[@type='button'])[3]").click()
+        driver.find_element_by_xpath("//div[@col='0']").click()
+	# Delete Virtual Device
+        driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/delete-device.tpl.html')]").click()
+	driver.find_element_by_xpath("//a[contains(.,'Delete Selected')]").click()
         for i in range(60):
             try:
                 if driver.find_element_by_xpath("//button[@type='submit']").is_displayed(): break
