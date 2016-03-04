@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="TestAddServerAssignCustomerFirefox-20160304152944" tests="1" time="94.674">
+	<testcase classname="TestAddServerAssignCustomerFirefox" name="test_enable_disable_timemarkpolicy_firefox" time="94.674"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

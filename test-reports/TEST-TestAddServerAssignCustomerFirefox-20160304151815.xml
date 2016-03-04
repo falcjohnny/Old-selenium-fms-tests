@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<testsuite errors="2" failures="0" name="TestAddServerAssignCustomerFirefox-20160304151815" tests="2" time="305.206">
+	<testcase classname="TestAddServerAssignCustomerFirefox" name="test_enable_disable_timemarkpolicy_firefox" time="0.000">
+		<error message="time out" type="AssertionError">
+<![CDATA[Traceback (most recent call last):
+  File "test_enable_disable_timemarkpolicy_firefox.py", line 106, in test_enable_disable_timemarkpolicy_firefox
+    else: self.fail("time out")
+AssertionError: time out
+]]>		</error>
+	</testcase>
+	<testcase classname="TestAddServerAssignCustomerFirefox" name="test_enable_disable_timemarkpolicy_firefox" time="305.206">
+		<error message="Message: Session [cbc49973-a9b0-4cfe-a9fd-ece773892f4e] was terminated due to CLIENT_GONE
+Stacktrace:
+    at org.openqa.grid.internal.ActiveTestSessions.getExistingSession (ActiveTestSessions.java:105)
+    at org.openqa.grid.internal.Registry.getExistingSession (Registry.java:425)
+    at org.openqa.grid.web.servlet.handler.RequestHandler.getSession (RequestHandler.java:240)
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:120)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:83)
+    at org.openqa.grid.web.servlet.DriverServlet.doDelete (DriverServlet.java:73)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:713)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:790)
+    at org.seleniumhq.jetty9.servlet.ServletHolder.handle (ServletHolder.java:808)
+    at org.seleniumhq.jetty9.servlet.ServletHandler.doHandle (ServletHandler.java:587)
+    at org.seleniumhq.jetty9.server.session.SessionHandler.doHandle (SessionHandler.java:221)
+    at org.seleniumhq.jetty9.server.handler.ContextHandler.doHandle (ContextHandler.java:1127)
+    at org.seleniumhq.jetty9.servlet.ServletHandler.doScope (ServletHandler.java:515)
+    at org.seleniumhq.jetty9.server.session.SessionHandler.doScope (SessionHandler.java:185)
+    at org.seleniumhq.jetty9.server.handler.ContextHandler.doScope (ContextHandler.java:1061)
+    at org.seleniumhq.jetty9.server.handler.ScopedHandler.handle (ScopedHandler.java:141)
+    at org.seleniumhq.jetty9.server.handler.HandlerWrapper.handle (HandlerWrapper.java:97)
+    at org.seleniumhq.jetty9.server.Server.handle (Server.java:499)
+    at org.seleniumhq.jetty9.server.HttpChannel.handle (HttpChannel.java:310)
+    at org.seleniumhq.jetty9.server.HttpConnection.onFillable (HttpConnection.java:257)
+    at org.seleniumhq.jetty9.io.AbstractConnection$2.run (AbstractConnection.java:540)
+    at org.seleniumhq.jetty9.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:635)
+    at org.seleniumhq.jetty9.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:555)
+    at java.lang.Thread.run (Thread.java:745)" type="WebDriverException">
+<![CDATA[Traceback (most recent call last):
+  File "test_enable_disable_timemarkpolicy_firefox.py", line 189, in tearDown
+    self.driver.quit()
+  File "/usr/lib/python2.7/site-packages/selenium/webdriver/remote/webdriver.py", line 483, in quit
+    self.execute(Command.QUIT)
+  File "/usr/lib/python2.7/site-packages/selenium/webdriver/remote/webdriver.py", line 201, in execute
+    self.error_handler.check_response(response)
+  File "/usr/lib/python2.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 181, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: Session [cbc49973-a9b0-4cfe-a9fd-ece773892f4e] was terminated due to CLIENT_GONE
+Stacktrace:
+    at org.openqa.grid.internal.ActiveTestSessions.getExistingSession (ActiveTestSessions.java:105)
+    at org.openqa.grid.internal.Registry.getExistingSession (Registry.java:425)
+    at org.openqa.grid.web.servlet.handler.RequestHandler.getSession (RequestHandler.java:240)
+    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:120)
+    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:83)
+    at org.openqa.grid.web.servlet.DriverServlet.doDelete (DriverServlet.java:73)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:713)
+    at javax.servlet.http.HttpServlet.service (HttpServlet.java:790)
+    at org.seleniumhq.jetty9.servlet.ServletHolder.handle (ServletHolder.java:808)
+    at org.seleniumhq.jetty9.servlet.ServletHandler.doHandle (ServletHandler.java:587)
+    at org.seleniumhq.jetty9.server.session.SessionHandler.doHandle (SessionHandler.java:221)
+    at org.seleniumhq.jetty9.server.handler.ContextHandler.doHandle (ContextHandler.java:1127)
+    at org.seleniumhq.jetty9.servlet.ServletHandler.doScope (ServletHandler.java:515)
+    at org.seleniumhq.jetty9.server.session.SessionHandler.doScope (SessionHandler.java:185)
+    at org.seleniumhq.jetty9.server.handler.ContextHandler.doScope (ContextHandler.java:1061)
+    at org.seleniumhq.jetty9.server.handler.ScopedHandler.handle (ScopedHandler.java:141)
+    at org.seleniumhq.jetty9.server.handler.HandlerWrapper.handle (HandlerWrapper.java:97)
+    at org.seleniumhq.jetty9.server.Server.handle (Server.java:499)
+    at org.seleniumhq.jetty9.server.HttpChannel.handle (HttpChannel.java:310)
+    at org.seleniumhq.jetty9.server.HttpConnection.onFillable (HttpConnection.java:257)
+    at org.seleniumhq.jetty9.io.AbstractConnection$2.run (AbstractConnection.java:540)
+    at org.seleniumhq.jetty9.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:635)
+    at org.seleniumhq.jetty9.util.thread.QueuedThreadPool$3.run (QueuedThreadPool.java:555)
+    at java.lang.Thread.run (Thread.java:745)
+]]>		</error>
+	</testcase>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

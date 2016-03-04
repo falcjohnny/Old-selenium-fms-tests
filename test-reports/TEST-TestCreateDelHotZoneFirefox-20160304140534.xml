@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="TestCreateDelHotZoneFirefox-20160304140534" tests="1" time="59.140">
+	<testcase classname="TestCreateDelHotZoneFirefox" name="test_create_del_hotzone_firefox" time="59.140"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

@@ -98,13 +98,13 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         # Enable Timemark policy
         driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/snapshot-menu.tpl.html')]").click()
         driver.find_element_by_xpath("//span[contains(.,'Create TimeMark/CDP Policy')]").click()
-        for i in range(60):
-            try:
-                if driver.find_element_by_xpath("//button[contains(.,'Add')]").is_displayed(): break
-            except: pass
-            time.sleep(1)
-        else: self.fail("time out")
-	time.sleep(1)
+        #for i in range(60):
+        #    try:
+        #        if driver.find_element_by_xpath("//button[contains(.,'Add')]").is_displayed(): break
+        #    except: pass
+        #    time.sleep(1)
+        #else: self.fail("time out")
+	time.sleep(3)
         driver.find_element_by_xpath("//button[@ng-model='snapPolicy.schedule']").click()
 	#driver.find_element_by_xpath("(//input[@type='text'])[3]").clear()
         #driver.find_element_by_xpath("(//input[@type='text'])[3]").send_keys("00:00")

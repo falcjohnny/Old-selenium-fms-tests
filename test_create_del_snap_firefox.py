@@ -111,11 +111,11 @@ class TestCreateDelSnapFirefox(unittest.TestCase):
 	#Create Snapshot Resource
         driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/snapshot-menu.tpl.html')]").click()
         driver.find_element_by_link_text("Create Snapshot Resource").click()
-	time.sleep(2)
+	time.sleep(3)
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//strong[contains(.,'Snapshot resource created successfully')]").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'The snapshot resource has been created.')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -137,7 +137,29 @@ class TestCreateDelSnapFirefox(unittest.TestCase):
         #    time.sleep(1)
         #else: self.fail("time out")
 	driver.find_element_by_xpath("//div[@col='0']").click()
-        # Delet SAN Resource.
+        # Disable Snapshot resource
+        driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/snapshot-menu.tpl.html')]").click()
+	#driver.find_element_by_xpath("//a[contains(.,'Snapshot Resource')]").click()
+	driver.find_element_by_xpath("//a[contains(@data-template-url,'views/manage/snapshot-resource-menu.tpl.html')]").click()
+	time.sleep(2)
+	#driver.find_element_by_xpath("//span[contains(.,'Delete')]").click()
+	driver.find_element_by_xpath("//i[@class='fa fa-trash']").click()
+        #for i in range(60):
+        #    try:
+        #        if driver.find_element_by_xpath("//a[contains(.,'Delete SafeCache')]").is_displayed(): break
+        #    except: pass
+        #    time.sleep(1)
+        #else: self.fail("time out")
+	time.sleep(2)
+        driver.find_element_by_xpath("//button[contains(.,'Delete')]").click()
+        for i in range(60):
+            try:
+                if driver.find_element_by_xpath("//strong[contains(.,'The snapshot resource has been deleted.')]").is_displayed(): break
+            except: pass
+            time.sleep(1)
+        else: self.fail("time out")
+        driver.find_element_by_xpath("//div[@col='0']").click()
+	# Delet SAN Resource.
     	driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/delete-device.tpl.html')]").click()
 	driver.find_element_by_xpath("//a[contains(.,'Delete')]").click()
         for i in range(60):
