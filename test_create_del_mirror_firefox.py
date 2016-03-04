@@ -110,7 +110,7 @@ class TestCreateDelMirrorFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//strong[contains(.,'Success')]").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'Mirror created successfully')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -124,7 +124,7 @@ class TestCreateDelMirrorFirefox(unittest.TestCase):
             time.sleep(1)
         else: self.fail("time out")
 	driver.find_element_by_xpath("//a[contains(.,'Virtual Device Mirror ')]").click()
-	driver.find_element_by_xpath("//a[contains(.,'Delete Mirror Policy')]").click()
+	driver.find_element_by_xpath("//a[contains(.,'Delete Mirror')]").click()
         driver.find_element_by_xpath("//button[contains(.,'Delete')]").click()
         for i in range(60):
             try:
@@ -135,7 +135,7 @@ class TestCreateDelMirrorFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//div[@col='0']").click()
 	# Delete Virtual Device
         driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/delete-device.tpl.html')]").click()
-	driver.find_element_by_xpath("//a[contains(.,'Delete Selected')]").click()
+	driver.find_element_by_xpath("//a[contains(.,'Delete')]").click()
         for i in range(60):
             try:
                 if driver.find_element_by_xpath("//button[@type='submit']").is_displayed(): break

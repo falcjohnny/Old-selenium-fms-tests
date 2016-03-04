@@ -154,7 +154,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//div[@col='0']").click()
 	# Delete Virtual Device
         driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/delete-device.tpl.html')]").click()
-	driver.find_element_by_xpath("//a[contains(.,'Delete Selected')]").click()
+	driver.find_element_by_xpath("//a[contains(.,'Delete')]").click()
         for i in range(60):
             try:
                 if driver.find_element_by_xpath("//button[@type='submit']").is_displayed(): break
