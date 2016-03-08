@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<testsuite errors="1" failures="0" name="TestCreateDelHotZoneFirefox-20160307105146" tests="1" time="69.304">
+	<testcase classname="TestCreateDelHotZoneFirefox" name="test_create_del_hotzone_firefox" time="69.304">
+		<error message="Alert Text: None
+&lt;super: &lt;class 'WebDriverException'&gt;, &lt;UnexpectedAlertPresentException object&gt;&gt;" type="UnexpectedAlertPresentException">
+<![CDATA[Traceback (most recent call last):
+  File "test_create_del_hotzone_firefox.py", line 58, in test_create_del_hotzone_firefox
+    driver.find_element_by_xpath("//button[@type='button']").click()
+  File "/usr/lib/python2.7/site-packages/selenium/webdriver/remote/webelement.py", line 75, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/usr/lib/python2.7/site-packages/selenium/webdriver/remote/webelement.py", line 454, in _execute
+    return self._parent.execute(command, params)
+  File "/usr/lib/python2.7/site-packages/selenium/webdriver/remote/webdriver.py", line 201, in execute
+    self.error_handler.check_response(response)
+  File "/usr/lib/python2.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 181, in check_response
+    raise exception_class(message, screen, stacktrace)
+UnexpectedAlertPresentException: Alert Text: None
+<super: <class 'WebDriverException'>, <UnexpectedAlertPresentException object>>
+]]>		</error>
+	</testcase>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

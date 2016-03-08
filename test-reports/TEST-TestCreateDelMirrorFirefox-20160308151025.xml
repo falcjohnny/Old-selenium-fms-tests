@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<testsuite errors="0" failures="0" name="TestCreateDelMirrorFirefox-20160308151025" tests="1" time="178.442">
+	<testcase classname="TestCreateDelMirrorFirefox" name="test_create_del_mirror_firefox" time="178.442"/>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

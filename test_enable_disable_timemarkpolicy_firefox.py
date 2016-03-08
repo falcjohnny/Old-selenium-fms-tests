@@ -54,8 +54,8 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
             time.sleep(1)
         else: self.fail("time out")
         # Go to Customer
-        driver.find_element_by_xpath("//li[3]/div/span").click()
-        driver.find_element_by_xpath("//button[@type='button']").click()
+        driver.find_element_by_xpath("//span[contains(.,'Customers')]").click()
+	driver.find_element_by_xpath("//button[@type='button']").click()
         driver.find_element_by_xpath("(//input[@type='text'])[2]").clear()
         driver.find_element_by_xpath("(//input[@type='text'])[2]").send_keys("test")
         driver.find_element_by_xpath("(//input[@type='text'])[3]").clear()
@@ -63,13 +63,14 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//strong[contains(.,'Customer added successfully')]").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'The customer has been added.')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
-        driver.find_element_by_xpath("//fieldset/div/div/div/div/span").click()
-        # Select server to assign it to customer
+	driver.find_element_by_xpath("//button[contains(@ng-click,'showAssignDialog(customerGrid.selectedRows[0])')]").click()
+        time.sleep(1)
+	# Select server to assign it to customer
+	driver.find_element_by_xpath("//span[@aria-label='Select box activate']").click()
         driver.find_element_by_link_text("FS-FSS-H5-140").click()
         driver.find_element_by_xpath("//label[contains(.,'Shared')]").click()
         driver.find_element_by_xpath("(//input[@type='text'])[4]").click()
@@ -78,7 +79,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//strong[contains(.,'Customer updated successfully')]").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'The customer has been updated.')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -119,7 +120,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//strong[contains(.,'TimeMark policy created successfully  ')]").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'The TimeMark policy has been created.  ')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -127,19 +128,15 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         # Verify timemark policy
         driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/snapshot-menu.tpl.html')]").click()
         driver.find_element_by_xpath("//span[contains(.,'Edit TimeMark/CDP Policy')]").click()
+	time.sleep(1)
         try: self.assertEqual("2", driver.find_element_by_name("snapFreq").get_attribute("value"))
         except AssertionError as e: self.verificationErrors.append(str(e))
         try: self.assertEqual("12", driver.find_element_by_name("snapNotifyDur").get_attribute("value"))
         except AssertionError as e: self.verificationErrors.append(str(e))
         try: self.assertEqual("1000", driver.find_element_by_name("maxShots").get_attribute("value"))
         except AssertionError as e: self.verificationErrors.append(str(e))
-        driver.find_element_by_xpath("(//button[@type='button'])[16]").click()
-        for i in range(60):
-            try:
-                if driver.find_element_by_xpath("//div[@id='center']/div/div[2]/div[2]/div/div/div/div").is_displayed(): break
-            except: pass
-            time.sleep(1)
-        else: self.fail("time out")
+        #driver.find_element_by_xpath("(//button[@type='button'])[16]").click()
+	driver.find_element_by_xpath("//button[contains(.,'Cancel')]").click()
 	driver.find_element_by_xpath("//div[@col='0']").click()
         # Disable Timemark policy
         driver.find_element_by_xpath("//button[contains(@data-template-url,'views/manage/snapshot-menu.tpl.html')]").click()

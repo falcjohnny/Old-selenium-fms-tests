@@ -12,7 +12,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Remote(command_executor='http://172.17.0.3:4444/wd/hub',desired_capabilities=DesiredCapabilities.FIREFOX)
         self.driver.implicitly_wait(30)
-        self.base_url = 172.17.0.2
+        self.base_url = "http://172.17.0.2/"
         self.driver.maximize_window()
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -54,7 +54,7 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
             time.sleep(1)
         else: self.fail("time out")
         # Go to Customer
-        driver.find_element_by_xpath("//li[3]/div/span").click()
+	driver.find_element_by_xpath("//span[contains(.,'Customers')]").click()
         driver.find_element_by_xpath("//button[@type='button']").click()
         driver.find_element_by_xpath("(//input[@type='text'])[2]").clear()
         driver.find_element_by_xpath("(//input[@type='text'])[2]").send_keys("test")
@@ -63,13 +63,16 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//strong[contains(.,'Customer added successfully')]").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'The customer has been added.')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
-        driver.find_element_by_xpath("//fieldset/div/div/div/div/span").click()
+        #driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
+        #driver.find_element_by_xpath("//fieldset/div/div/div/div/span").click()
+	driver.find_element_by_xpath("//button[contains(@ng-click,'showAssignDialog(customerGrid.selectedRows[0])')]").click()
+	time.sleep(1)
         # Select server to assign it to customer
+	driver.find_element_by_xpath("//span[@aria-label='Select box activate']").click()
         driver.find_element_by_link_text("FS-FSS-H5-140").click()
         driver.find_element_by_xpath("//label[contains(.,'Shared')]").click()
         driver.find_element_by_xpath("(//input[@type='text'])[4]").click()
@@ -78,12 +81,13 @@ class TestAddServerAssignCustomerFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//strong[contains(.,'Customer updated successfully')]").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'The customer has been updated.')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
         driver.find_element_by_xpath("(//a[contains(@href, '')])[8]").click()
         driver.find_element_by_link_text("Logout").click()
+	time.sleep(2)
         # Login with domain admin user
         driver.find_element_by_xpath("//input[@type='text']").clear()
         driver.find_element_by_xpath("//input[@type='text']").send_keys("admin")

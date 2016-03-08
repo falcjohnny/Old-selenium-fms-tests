@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<testsuite errors="1" failures="0" name="TestAddServerAssignCustomerFirefox-20160308120446" tests="1" time="88.702">
+	<testcase classname="TestAddServerAssignCustomerFirefox" name="test_add_server_assign_customer_firefox" time="88.702">
+		<error message="Message: Element not found in the cache - perhaps the page has changed since it was looked up
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:59:12'
+System info: host: '97f27eaef733', ip: '172.17.0.4', os.name: 'Linux', os.arch: 'amd64', os.version: '3.8.13-118.el7uek.x86_64', java.version: '1.8.0_45-internal'
+Driver info: driver.version: unknown
+Screenshot: available via screen
+Stacktrace:
+    at &lt;anonymous class&gt;.fxdriver.cache.getElementAt (resource://fxdriver/modules/web-element-cache.js:9351)
+    at &lt;anonymous class&gt;.Utils.getElementAt (file:///tmp/anonymous2687075987725055474webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:8978)
+    at &lt;anonymous class&gt;.fxdriver.preconditions.visible (file:///tmp/anonymous2687075987725055474webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9979)
+    at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_ (file:///tmp/anonymous2687075987725055474webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+    at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h (file:///tmp/anonymous2687075987725055474webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+    at &lt;anonymous class&gt;.fxdriver.Timer.prototype.setTimeout/&lt;.notify (file:///tmp/anonymous2687075987725055474webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:621)" type="StaleElementReferenceException">
+<![CDATA[Traceback (most recent call last):
+  File "test_add_server_assign_customer_firefox.py", line 91, in test_add_server_assign_customer_firefox
+    driver.find_element_by_xpath("//input[@type='text']").clear()
+  File "/usr/lib/python2.7/site-packages/selenium/webdriver/remote/webelement.py", line 83, in clear
+    self._execute(Command.CLEAR_ELEMENT)
+  File "/usr/lib/python2.7/site-packages/selenium/webdriver/remote/webelement.py", line 454, in _execute
+    return self._parent.execute(command, params)
+  File "/usr/lib/python2.7/site-packages/selenium/webdriver/remote/webdriver.py", line 201, in execute
+    self.error_handler.check_response(response)
+  File "/usr/lib/python2.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 181, in check_response
+    raise exception_class(message, screen, stacktrace)
+StaleElementReferenceException: Message: Element not found in the cache - perhaps the page has changed since it was looked up
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:59:12'
+System info: host: '97f27eaef733', ip: '172.17.0.4', os.name: 'Linux', os.arch: 'amd64', os.version: '3.8.13-118.el7uek.x86_64', java.version: '1.8.0_45-internal'
+Driver info: driver.version: unknown
+Screenshot: available via screen
+Stacktrace:
+    at <anonymous class>.fxdriver.cache.getElementAt (resource://fxdriver/modules/web-element-cache.js:9351)
+    at <anonymous class>.Utils.getElementAt (file:///tmp/anonymous2687075987725055474webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:8978)
+    at <anonymous class>.fxdriver.preconditions.visible (file:///tmp/anonymous2687075987725055474webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9979)
+    at <anonymous class>.DelayedCommand.prototype.checkPreconditions_ (file:///tmp/anonymous2687075987725055474webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+    at <anonymous class>.DelayedCommand.prototype.executeInternal_/h (file:///tmp/anonymous2687075987725055474webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+    at <anonymous class>.fxdriver.Timer.prototype.setTimeout/<.notify (file:///tmp/anonymous2687075987725055474webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:621)
+]]>		</error>
+	</testcase>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

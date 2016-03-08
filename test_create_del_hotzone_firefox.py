@@ -54,8 +54,8 @@ class TestCreateDelHotZoneFirefox(unittest.TestCase):
             time.sleep(1)
         else: self.fail("time out")
         # Go to Customer
-        driver.find_element_by_xpath("//li[3]/div/span").click()
-        driver.find_element_by_xpath("//button[@type='button']").click()
+        driver.find_element_by_xpath("//span[contains(.,'Customers')]").click()
+	driver.find_element_by_xpath("//button[@type='button']").click()
         driver.find_element_by_xpath("(//input[@type='text'])[2]").clear()
         driver.find_element_by_xpath("(//input[@type='text'])[2]").send_keys("test")
         driver.find_element_by_xpath("(//input[@type='text'])[3]").clear()
@@ -63,13 +63,14 @@ class TestCreateDelHotZoneFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//strong[contains(.,'Customer added successfully')]").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'The customer has been added.')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
-        driver.find_element_by_xpath("(//button[@type='button'])[2]").click()
-        driver.find_element_by_xpath("//fieldset/div/div/div/div/span").click()
-        # Select server to assign it to customer
+        driver.find_element_by_xpath("//button[contains(@ng-click,'showAssignDialog(customerGrid.selectedRows[0])')]").click()
+	time.sleep(1)
+	# Select server to assign it to customer
+	driver.find_element_by_xpath("//span[@aria-label='Select box activate']").click()
         driver.find_element_by_link_text("FS-FSS-H5-140").click()
         driver.find_element_by_xpath("//label[contains(.,'Shared')]").click()
         driver.find_element_by_xpath("(//input[@type='text'])[4]").click()
@@ -78,7 +79,7 @@ class TestCreateDelHotZoneFirefox(unittest.TestCase):
         driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//strong[contains(.,'Customer updated successfully')]").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'The customer has been updated.')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")
@@ -110,7 +111,7 @@ class TestCreateDelHotZoneFirefox(unittest.TestCase):
 	driver.find_element_by_xpath("//button[@type='submit']").click()
         for i in range(60):
             try:
-                if driver.find_element_by_xpath("//strong[contains(.,'Success')]").is_displayed(): break
+                if driver.find_element_by_xpath("//strong[contains(.,'The HotZone has been created.')]").is_displayed(): break
             except: pass
             time.sleep(1)
         else: self.fail("time out")

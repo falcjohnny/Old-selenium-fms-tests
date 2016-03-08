@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<testsuite errors="1" failures="0" name="TestCreateDelHotZoneFirefox-20160308122339" tests="1" time="2086.988">
+	<testcase classname="TestCreateDelHotZoneFirefox" name="test_create_del_hotzone_firefox" time="2086.988">
+		<error message="time out" type="AssertionError">
+<![CDATA[Traceback (most recent call last):
+  File "test_create_del_hotzone_firefox.py", line 117, in test_create_del_hotzone_firefox
+    else: self.fail("time out")
+AssertionError: time out
+]]>		</error>
+	</testcase>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>

@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<testsuite errors="1" failures="0" name="TestAddServerAssignCustomerFirefox-20160308095342" tests="1" time="2112.859">
+	<testcase classname="TestAddServerAssignCustomerFirefox" name="test_add_server_assign_customer_firefox" time="2112.859">
+		<error message="time out" type="AssertionError">
+<![CDATA[Traceback (most recent call last):
+  File "test_add_server_assign_customer_firefox.py", line 69, in test_add_server_assign_customer_firefox
+    else: self.fail("time out")
+AssertionError: time out
+]]>		</error>
+	</testcase>
+	<system-out>
+<![CDATA[]]>	</system-out>
+	<system-err>
+<![CDATA[]]>	</system-err>
+</testsuite>
